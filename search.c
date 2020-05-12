@@ -57,7 +57,23 @@ int rlinearsearch(int x, int arr[], int n, int i) {
  * You have to implement this function.
  */
 int slinearsearch(int x, int arr[], int n) {
-    return -1;
+    if (n <= 0 || arr == NULL){
+        errno = EINVAL;
+        return -1;
+    } else {
+        int last = arr[n - 1];
+        arr[n - 1] = x;
+        int i = 0;
+        while (arr[i] != x){
+            i++;
+        }
+        arr[n - 1] = last;
+        if ((i < n - 1) || (x == arr[n - 1])){
+            return i;
+        } else{
+            return -1;
+        }
+    }
 }
 
 /*
