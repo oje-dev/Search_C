@@ -35,7 +35,19 @@ int linearsearch(int x, int arr[], int n) {
  * You have to implement this function.
  */
 int rlinearsearch(int x, int arr[], int n, int i) {
-    return -1;
+    if (n <= 0 || arr == NULL){
+        errno = EINVAL;
+        return -1;
+
+    } else if (i == n && arr[i] != x){
+        return -1;
+
+    } else if (arr[i] == x){
+        return i;
+
+    } else{
+        return rlinearsearch(x, arr, n, i + 1);
+    }
  }
 
 /*
