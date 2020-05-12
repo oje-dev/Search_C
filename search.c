@@ -134,5 +134,19 @@ int binarysearch(int x, int arr[], int n)
  */
 int rbinarysearch(int x, int arr[], int li, int hi)
 {
-    return -1;
+    if (li < 0 || arr == NULL){
+        errno = EINVAL;
+        return -1;
+    }else {
+        while (li <= hi){
+            int mid = (li + hi) / 2;
+            if (arr[mid] == x) return mid;
+            if (arr[mid] < x){
+                return rbinarysearch(x, arr, mid + 1, hi);
+            }else {
+                return rbinarysearch(x, arr, li, mid -1);
+            }
+        }
+        return -1;
+    }
 }
